@@ -12,7 +12,7 @@
 	
 	
 	
-	<form id="apiForm" action="http://localhost:1090/SBIePay/callme" method="POST">
+	<form id="apiForm" action="http://localhost:1090/SBIePay/callme" method="post">
     
             
         <label>Order Number:</label>
@@ -23,13 +23,14 @@
         <input id="orderAmount" name="orderAmount" type="text" />
 		
 		
-		<!--<label>Environment Variable</label>-->
-        
-		<!--<label>mk:</label>
+		<label>Environment Type</label>
+		<input id="environment" name="environment" type="text" />
+        <!--
+		<label>mk:</label>
 		        <input id="mk" name="mk" type="text" />
 		         <label>kk:</label>
 		        <input id="kk" name="kk" type="text" />
-        -->
+       
         
         
         <div style="display: none;">
@@ -46,15 +47,10 @@
         <input id="encryptpaymentDetails" name="encryptpaymentDetails" type="text" />
         
         <label>merchIdVal:</label>
-        <input id="merchIdVal" name="merchIdVal" type="text" />
+        <input id="merchIdVal" name="merchIdVal" type="text" />-->
         
-     <!--    <label>mk:</label>
-        <input id="mk" name="mk" type="text" 			 disabled="disabled"	 readonly="readonly" />
-         <label>kk:</label>
-        <input id="kk" name="kk" type="text"  			 disabled="disabled"	 readonly="readonly" />-->
-		</div>
-        <input type="submit" value="Submit"/>
-        </td>
+     
+        <input type="submit" value="Submit"/>       
       </form>
 	<div id="response"></div>
 </body>

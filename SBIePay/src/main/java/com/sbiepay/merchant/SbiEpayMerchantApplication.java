@@ -32,7 +32,7 @@ public class SbiEpayMerchantApplication extends SpringBootServletInitializer imp
 		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/add").setViewName("add");
 		
-		registry.addViewController("/transaction6").setViewName("transaction6");
+		registry.addViewController("/callme3").setViewName("callme3");
 
 	}
 	
