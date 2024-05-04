@@ -34,12 +34,7 @@ MyComponent myComponent;
         System.out.println("Parameter 2: " + orderAmount);
        
         try {
-		//	return new RedirectView(encRequest.redirectCall2(merchantOrderNumber,orderAmount,URLEncoder.encode(req.getParameter("mk"),"UTF-8"),URLEncoder.encode(req.getParameter("kk"),"UTF-8")));
-        	
-        	//return new RedirectView(encRequest.redirectCall2(merchantOrderNumber,orderAmount,req.getParameter("mk"),req.getParameter("kk")));
-    		
-        	//return new RedirectView(encRequest.redirectCall2(merchantOrderNumber,orderAmount,myComponent.getMkValue(),myComponent.getKkValue()));
-        	
+		 	
         	return new RedirectView(encRequest.redirectCall3(merchantOrderNumber,orderAmount,myComponent.getMkValue(),myComponent.getKkValue(),myComponent.getMerchantId(),myComponent.getSuccessUrl(),myComponent.getFailUrl()));
         	
         } catch (Exception e) {
@@ -49,7 +44,7 @@ MyComponent myComponent;
 		
 		
 	
-       return new RedirectView("https://www.google.com/");
+       return new RedirectView("https://uat.sbiepay.sbi/");
 	}
 	
 

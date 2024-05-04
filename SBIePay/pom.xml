@@ -46,9 +46,8 @@
  <dependency>
   <groupId>com.epay.encdata</groupId>
   <artifactId>encdata</artifactId>
-  <version>1.1.5</version>
+  <version>1.1.9</version>
 </dependency>
-
 
 
      <dependency>
