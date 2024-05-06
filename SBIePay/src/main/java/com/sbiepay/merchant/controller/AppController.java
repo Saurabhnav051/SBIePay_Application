@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.epay.encdata.config.AES256Bit;
 import com.epay.encdata.controller.RedirectUrl;
+import com.epay.encdata.util.GenericExceptionLog;
+import com.epay.encdata.util.GetMekKey;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 //import com.epay.encdata.controller.*;
 import java.util.Base64;
 
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 @RestController
 public class AppController {
@@ -46,6 +50,46 @@ MyComponent myComponent;
 	
        return new RedirectView("https://uat.sbiepay.sbi/");
 	}
+	
+	public  String decrypt(String encryptedValue) throws NullPointerException, Exception {
+		String decryptedValue = "";
+		try {
+			
+			GetMekKey mekKey = new GetMekKey();
+			String meKey= mekKey.getMeK(myComponent.getMerchantId(),myComponent.getKkValue(),myComponent.getMkValue());
+			  
+				SecretKeySpec secretkeyspec=null;
+				secretkeyspec = AES256Bit.readKeyBytes(meKey);
+				decryptedValue = AES256Bit.decrypt(encryptedValue, secretkeyspec);
+			  
+			  
+			  
+
+		}  catch (Exception ex) {
+			GenericExceptionLog.exceptionJava(ex,
+					"AESEncryptDecrypt.java :: An error occurred while decryption .",
+					"AESEncryptDecrypt");
+			
+		}
+		return decryptedValue;
+	}
+	
+	
+	public  String encrypt(String decryptedValue)
+			throws NullPointerException, Exception {
+		String encryptValue = "";
+		GetMekKey mekKey = new GetMekKey();
+		String meKey= mekKey.getMeK(myComponent.getMerchantId(),myComponent.getKkValue(),myComponent.getMkValue());
+		
+		SecretKeySpec secretkeyspec=null;
+		secretkeyspec = AES256Bit.readKeyBytes(meKey);
+		encryptValue = AES256Bit.encrypt(decryptedValue, secretkeyspec);
+		
+		
+		return encryptValue;
+		
+	}
+
 	
 
 }
